@@ -10,7 +10,6 @@ const valuesArray = [
   '9IR',
 ];
 
-
 // Calculation functions -- START --
 const validateEmail = (email) => {
   return String(email)
@@ -80,6 +79,7 @@ const calculateTotal = (valueToCalculate, lastSum) => {
 //DOM Elements -- START --
 const firstNameInput = document.getElementById('firstName');
 const lastNameInput = document.getElementById('lastName');
+const middleNameInput = document.getElementById('middleName');
 const calculateButton = document.getElementById('calculateButton');
 const resultParagraph = document.getElementById('resultParagraph');
 const yearDropdown = document.getElementById('year');
@@ -89,11 +89,6 @@ const emailInput = document.getElementById('emailInput');
 const tryAgainButton = document.getElementById('tryAgainButton');
 const emailElement = document.getElementById('emailWrapper');
 const calculationElement = document.getElementById('calculationArea');
-
-
-
-// let onlyDateCalculation = true;
-//   if (onlyDateCalculation) calculationElement.classList.remove('buttonDisabled');
 
 /* Year, day and month dropdown creation */
 const generateYearDropdown = (domElement) => {
@@ -167,10 +162,11 @@ generateMonthsDropdown(monthDropdown);
 
 let firstNameValue = 0,
   lastNameValue = 0,
-  selectedDay = 16,
-  selectedMonth = 7,
-  selectedYear = 1992,
-  emailInputValue = '';
+  middleNameValue = 0;
+(selectedDay = 20),
+  (selectedMonth = 7),
+  (selectedYear = 1992),
+  (emailInputValue = '');
 
 const setDisabledButton = (
   nameInputValue,
@@ -201,6 +197,10 @@ lastNameInput.addEventListener('change', (e) => {
   setDisabledButton(firstNameValue, lastNameValue, calculateButton);
 });
 
+middleNameInput.addEventListener('change', (e) => {
+  middleNameValue = calculateTotal(e.target.value);
+});
+
 yearDropdown.addEventListener('change', (e) => {
   console.log('changing year... ', e.target.value);
   selectedYear = parseInt(e.target.value);
@@ -219,22 +219,24 @@ monthDropdown.addEventListener('change', (e) => {
 setDisabledButton(firstNameValue, lastNameValue, calculateButton);
 
 calculateButton.addEventListener('click', () => {
-  
   let nameCalculation = calculateTotal(
-    calculateTotal(firstNameValue) + calculateTotal(lastNameValue)
+    calculateTotal(firstNameValue) +
+      calculateTotal(lastNameValue) +
+      calculateTotal(middleNameValue)
   );
-
+  console.log(nameCalculation);
   let dateCalculation = calculateTotal(
     calculateTotal(selectedDay) +
       calculateTotal(selectedMonth) +
       calculateTotal(selectedYear)
   );
+  console.log(dateCalculation);
 
   let granTotal = calculateTotal(
     calculateTotal(nameCalculation) + calculateTotal(dateCalculation),
     true
   );
-
+  console.log(granTotal);
   calculationElement.style.display = 'none';
 
   const loaderElement = document.getElementById('loader');
@@ -255,9 +257,11 @@ tryAgainButton.addEventListener('click', () => {
   resultParagraph.innerText = '';
   firstNameValue = 0;
   lastNameValue = 0;
+  middleNameValue = 0;
   console.log(firstNameInput);
   firstNameInput.value = '';
   lastNameInput.value = '';
+  middleNameInput.value = '';
   setDisabledButton(firstNameValue, lastNameValue, calculateButton);
 });
 

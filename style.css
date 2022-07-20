@@ -24,42 +24,61 @@ html {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  flex: 1;
 }
 
 .firstNameWrapper label,
-.lastNameWrapper label {
+.lastNameWrapper label,
+.middleNameWrapper label {
   color: #545454;
-  font-size: 1.6rem;
-  padding: 1rem;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
 }
 
 .firstNameWrapper input,
-.lastNameWrapper input, .emailInput {
-  padding: 0.5rem;
+.lastNameWrapper input,
+.emailInput,
+.middleNameWrapper input {
+  padding: 0.25rem 0.5rem;
   outline: none;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.firstNameWrapper,
+.lastNameWrapper,
+.middleNameWrapper {
+  margin: 0 1rem;
+  width: 33%;
+
 }
 
 .dateDropdown {
   display: flex;
-  /* width: 50%; */
-  justify-content: space-around;
+  padding: 1rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .year,
 .month,
 .day {
-  padding: 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  margin: 1rem;
 }
 
 .year label,
 .month label,
 .day label {
-  color: #2b2b2b;
-  font-size: 1.2rem;
-  margin-right: 1rem;
+  color: #545454;
+  padding: 0.5rem 0;
 }
 
 #year,
@@ -73,15 +92,15 @@ html {
 }
 
 .option {
-  /* color: red; */
   border: 1px solid #ccc;
   padding: 0.2rem 0.5rem;
 }
 
-.calculateButton, .emailButton, .tryAgainButton {
+.calculateButton,
+.emailButton,
+.tryAgainButton {
   padding: 0.8rem 1.6rem;
   outline: none;
-  /* border: 2px solid white; */
   border: none;
   outline: none;
   border-radius: 5px;
@@ -90,14 +109,16 @@ html {
   color: white;
   transition: 0.3s all ease;
   background-color: rgb(121, 93, 148);
-  
+  align-self: center;
 }
 
 .buttonAnimation {
   animation: button-enabled 800ms ease;
 }
 
-.calculateButton:hover, .emailButton:hover, .tryAgainButton:hover {
+.calculateButton:hover,
+.emailButton:hover,
+.tryAgainButton:hover {
   box-shadow: 5px 3px 15px 2px rgba(0, 0, 0, 0.225);
   transform: scale(1.05);
   cursor: pointer;
@@ -252,37 +273,26 @@ html {
 @keyframes text-animation {
   0%,
   15% {
-    opacity: .1
+    opacity: 0.1;
   }
 
   50% {
     opacity: 1;
   }
   100% {
-    opacity: .1;
+    opacity: 0.1;
   }
 }
 
 @keyframes button-enabled {
   0%,
   15% {
-    transform: scale(.3);
+    transform: scale(0.3);
   }
 
   50% {
     transform: scale(1.2);
   }
-  /* 75% {
-    transform: scale(.85);
-  }
-
-  85% {
-    transform: scale(1.1);
-  }
-
-  90% {
-    transform: scale(.85);
-  } */
 
   100% {
     transform: scale(1);
