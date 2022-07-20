@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Angel number calculator</title>
+</head>
+
+<body>
+    <main class="mainSection">
+
+        <div class="calculationArea" id="calculationArea">
+            <div class="nameWrapper">
+                <div class="firstNameWrapper">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="firstName" class="firstName">
+                </div>
+                <div class="lastNameWrapper">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" class="lastName">
+                </div>
+            </div>
+            <div class="dateDropdown">
+                <div class="year">
+                    <label for="year">Year</label>
+                    <select id="year" name="year"></select>
+                </div>
+
+                <div class="month">
+                    <label for="month">Month</label>
+                    <select id="month" name="month"></select>
+                </div>
+
+                <div class="day">
+                    <label for="day">Day</label>
+                    <select id="day" name="day"></select>
+                </div>
+
+
+            </div>
+
+            <button class="calculateButton" id="calculateButton">Calculate</button>
+        </div>
+
+        <div class="loader" id="loader">
+            <p class="loader-text">Calculating your angel number....</p>
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <p id="resultParagraph"></p>
+
+        <!-- <div class="klaviyo-form-U5LXVf emailWrapper" id="emailWrapper">
+            <input type="email" name="email" id="emailInput" class="emailInput" placeholder="Enter your email...">
+            <button class="emailButton" id="emailButton">Subscribe to our newsletter!</button>
+        </div> -->
+        <div class="klaviyo-form-U5LXVf emailWrapper" id="emailWrapper"></div>
+    </main>
+
+    <script src="./index.js"></script>
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WWNCbQ"></script>
+</body>
+
+</html>
