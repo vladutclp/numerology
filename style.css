@@ -78,7 +78,7 @@ html {
   padding: 0.2rem 0.5rem;
 }
 
-.calculateButton, .emailButton {
+.calculateButton, .emailButton, .tryAgainButton {
   padding: 0.8rem 1.6rem;
   outline: none;
   /* border: 2px solid white; */
@@ -97,7 +97,7 @@ html {
   animation: button-enabled 800ms ease;
 }
 
-.calculateButton:hover, .emailButton:hover {
+.calculateButton:hover, .emailButton:hover, .tryAgainButton:hover {
   box-shadow: 5px 3px 15px 2px rgba(0, 0, 0, 0.225);
   transform: scale(1.05);
   cursor: pointer;

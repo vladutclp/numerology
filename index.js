@@ -86,6 +86,14 @@ const yearDropdown = document.getElementById('year');
 const dayDropdown = document.getElementById('day');
 const monthDropdown = document.getElementById('month');
 const emailInput = document.getElementById('emailInput');
+const tryAgainButton = document.getElementById('tryAgainButton');
+const emailElement = document.getElementById('emailWrapper');
+const calculationElement = document.getElementById('calculationArea');
+
+
+
+// let onlyDateCalculation = true;
+//   if (onlyDateCalculation) calculationElement.classList.remove('buttonDisabled');
 
 /* Year, day and month dropdown creation */
 const generateYearDropdown = (domElement) => {
@@ -211,6 +219,7 @@ monthDropdown.addEventListener('change', (e) => {
 setDisabledButton(firstNameValue, lastNameValue, calculateButton);
 
 calculateButton.addEventListener('click', () => {
+  
   let nameCalculation = calculateTotal(
     calculateTotal(firstNameValue) + calculateTotal(lastNameValue)
   );
@@ -226,13 +235,10 @@ calculateButton.addEventListener('click', () => {
     true
   );
 
-  const calculationElement = document.getElementById('calculationArea');
   calculationElement.style.display = 'none';
 
   const loaderElement = document.getElementById('loader');
   loaderElement.style.display = 'block';
-
-  const emailElement = document.getElementById('emailWrapper');
 
   setTimeout(() => {
     loaderElement.style.display = 'none';
@@ -243,35 +249,16 @@ calculateButton.addEventListener('click', () => {
   }, 2000);
 });
 
-// emailInput.addEventListener('change', (e) => {
-//   emailInputValue = e.target.value;
-
-//   if (!validateEmail(emailInputValue)) {
-//     emailButton.classList.add('buttonDisabled');
-//     emailButton.disabled = true;
-//   } else {
-//     emailButton.classList.remove('buttonDisabled');
-//     emailButton.disabled = false;
-//   }
-// });
-
-// emailButton.addEventListener('click', () => {
-//   const options = {
-//     method: 'POST',
-//     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       profiles: [{ email: emailInputValue }],
-//     }),
-//   };
-
-//   fetch(
-//     'https://a.klaviyo.com/api/v2/list/SSbj6w/subscribe?api_key=WWNCbQ',
-//     options
-//   )
-//     .then((response) => response.json())
-//     .then((response) => console.log(response))
-//     .catch((err) => console.error(err));
-// });
-
+tryAgainButton.addEventListener('click', () => {
+  emailElement.style.display = 'none';
+  calculationElement.style.display = 'flex';
+  resultParagraph.innerText = '';
+  firstNameValue = 0;
+  lastNameValue = 0;
+  console.log(firstNameInput);
+  firstNameInput.value = '';
+  lastNameInput.value = '';
+  setDisabledButton(firstNameValue, lastNameValue, calculateButton);
+});
 
 //Events listeners --END--
