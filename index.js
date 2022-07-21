@@ -162,11 +162,11 @@ generateMonthsDropdown(monthDropdown);
 
 let firstNameValue = 0,
   lastNameValue = 0,
-  middleNameValue = 0;
-(selectedDay = 20),
-  (selectedMonth = 7),
-  (selectedYear = 1992),
-  (emailInputValue = '');
+  middleNameValue = 0,
+  selectedDay = new Date().getDate(),
+  selectedMonth = new Date().getMonth() + 1,
+  selectedYear = 1992,
+  emailInputValue = '';
 
 const setDisabledButton = (
   nameInputValue,
@@ -202,17 +202,14 @@ middleNameInput.addEventListener('change', (e) => {
 });
 
 yearDropdown.addEventListener('change', (e) => {
-  console.log('changing year... ', e.target.value);
   selectedYear = parseInt(e.target.value);
 });
 
 dayDropdown.addEventListener('change', (e) => {
-  console.log('changing day... ', e.target.value);
   selectedDay = parseInt(e.target.value);
 });
 
 monthDropdown.addEventListener('change', (e) => {
-  console.log('changing month... ', e.target.value);
   selectedMonth = parseInt(e.target.value);
 });
 
@@ -224,19 +221,16 @@ calculateButton.addEventListener('click', () => {
       calculateTotal(lastNameValue) +
       calculateTotal(middleNameValue)
   );
-  console.log(nameCalculation);
   let dateCalculation = calculateTotal(
     calculateTotal(selectedDay) +
       calculateTotal(selectedMonth) +
       calculateTotal(selectedYear)
   );
-  console.log(dateCalculation);
 
-  let granTotal = calculateTotal(
+  let nameAndDateCalculation = calculateTotal(
     calculateTotal(nameCalculation) + calculateTotal(dateCalculation),
     true
   );
-  console.log(granTotal);
   calculationElement.style.display = 'none';
 
   const loaderElement = document.getElementById('loader');
@@ -244,8 +238,8 @@ calculateButton.addEventListener('click', () => {
 
   setTimeout(() => {
     loaderElement.style.display = 'none';
-    resultParagraph.innerText = `Your angel number is ${granTotal}`;
-    // resultParagraph.innerText = `Your angel number is ${nameCalculation}`;
+    // resultParagraph.innerText = `Your angel number is ${nameAndDateCalculation}`;
+    resultParagraph.innerText = `Your angel number is ${nameCalculation}`;
     // resultParagraph.innerText = `Your angel number is ${dateCalculation}`;
     emailElement.style.display = 'flex';
   }, 2000);
@@ -258,7 +252,6 @@ tryAgainButton.addEventListener('click', () => {
   firstNameValue = 0;
   lastNameValue = 0;
   middleNameValue = 0;
-  console.log(firstNameInput);
   firstNameInput.value = '';
   lastNameInput.value = '';
   middleNameInput.value = '';
