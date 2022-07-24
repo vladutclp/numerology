@@ -173,7 +173,7 @@ const setDisabledButton = (
   lastNameInputValue,
   buttonElement
 ) => {
-  let buttonDisabled = nameInputValue == 0 || lastNameInputValue == 0;
+  let buttonDisabled = nameInputValue == '' || lastNameInputValue == '';
 
   buttonElement.disabled = buttonDisabled;
 
@@ -188,13 +188,13 @@ const setDisabledButton = (
 firstNameInput.addEventListener('change', (e) => {
   firstNameValue = calculateTotal(e.target.value);
 
-  setDisabledButton(firstNameValue, lastNameValue, calculateButton);
+  setDisabledButton(e.target.value, lastNameInput.value, calculateButton);
 });
 
 lastNameInput.addEventListener('change', (e) => {
   lastNameValue = calculateTotal(e.target.value);
 
-  setDisabledButton(firstNameValue, lastNameValue, calculateButton);
+  setDisabledButton(firstNameInput.value, e.target.value, calculateButton);
 });
 
 middleNameInput.addEventListener('change', (e) => {
@@ -213,7 +213,9 @@ monthDropdown.addEventListener('change', (e) => {
   selectedMonth = parseInt(e.target.value);
 });
 
-setDisabledButton(firstNameValue, lastNameValue, calculateButton);
+window.addEventListener('load', (e) => {
+  setDisabledButton(firstNameInput.value, lastNameInput.value, calculateButton);
+})
 
 calculateButton.addEventListener('click', () => {
   let nameCalculation = calculateTotal(
@@ -239,8 +241,8 @@ calculateButton.addEventListener('click', () => {
   setTimeout(() => {
     loaderElement.style.display = 'none';
     // resultParagraph.innerText = `Your angel number is ${nameAndDateCalculation}`;
-    resultParagraph.innerText = `Your angel number is ${nameCalculation}`;
-    // resultParagraph.innerText = `Your angel number is ${dateCalculation}`;
+    // resultParagraph.innerText = `Your angel number is ${nameCalculation}`;
+    resultParagraph.innerText = `Your angel number is ${dateCalculation}`;
     emailElement.style.display = 'flex';
   }, 2000);
 });
@@ -255,7 +257,7 @@ tryAgainButton.addEventListener('click', () => {
   firstNameInput.value = '';
   lastNameInput.value = '';
   middleNameInput.value = '';
-  setDisabledButton(firstNameValue, lastNameValue, calculateButton);
+  setDisabledButton(firstNameInput.value, lastNameInput.value, calculateButton);
 });
 
 //Events listeners --END--

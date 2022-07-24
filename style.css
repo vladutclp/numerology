@@ -53,7 +53,6 @@ html {
 .middleNameWrapper {
   margin: 0 1rem;
   width: 33%;
-
 }
 
 .dateDropdown {
@@ -296,5 +295,39 @@ html {
 
   100% {
     transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  body {
+    font-size: 75%;
+  }
+
+  .firstNameWrapper label,
+  .lastNameWrapper label,
+  .middleNameWrapper label {
+    color: #545454;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .firstNameWrapper input,
+  .lastNameWrapper input,
+  .emailInput,
+  .middleNameWrapper input {
+    width: 70%;
+  }
+
+  .dateDropdown {
+    padding: 0;
+  }
+
+  .nameWrapper {
+    padding: 0;
+  }
+
+  #day, #year, #month {
+    font-size: 85%;
   }
 }
